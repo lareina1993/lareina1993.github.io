@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="JavaWeb应用–实现前端后台简单交互1. 实现功能&amp;nbsp;&amp;nbsp;本文实现的功能：登陆界面输入用户名和密码。如果用户名或者密码输入正确，则跳转到正确页面；否则，跳转到失败页面。      **注意** 用户名：admin &amp;nbsp;密码：123456（为了方便，没有建立用户数据库库查询，而是直接定义好用户名与密码)   **2.实现步骤**   &amp;nbsp;&amp;nbsp;需要准备的环境">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaWebApplication">
+<meta property="og:url" content="http://yoursite.com/2018/12/24/JavaWebApplication/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="JavaWeb应用–实现前端后台简单交互1. 实现功能&amp;nbsp;&amp;nbsp;本文实现的功能：登陆界面输入用户名和密码。如果用户名或者密码输入正确，则跳转到正确页面；否则，跳转到失败页面。      **注意** 用户名：admin &amp;nbsp;密码：123456（为了方便，没有建立用户数据库库查询，而是直接定义好用户名与密码)   **2.实现步骤**   &amp;nbsp;&amp;nbsp;需要准备的环境">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/1.png">
+<meta property="og:image" content="http://yoursite.com/images/2.png">
+<meta property="og:image" content="http://yoursite.com/images/3.png">
+<meta property="og:image" content="http://yoursite.com/images/4.png">
+<meta property="article:published_time" content="2018-12-24T07:07:58.000Z">
+<meta property="article:modified_time" content="2020-08-23T07:08:28.696Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>JavaWebApplication</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.1.0"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Hexo</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a target="_blank" rel="noopener" href="https://lareina1993.github.io/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/lareina1993">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/12/24/JavaWeb/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/12/23/SimpleWordCloud/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/12/24/JavaWebApplication/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2018/12/24/JavaWebApplication/&text=JavaWebApplication"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/12/24/JavaWebApplication/&title=JavaWebApplication"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/12/24/JavaWebApplication/&is_video=false&description=JavaWebApplication"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JavaWebApplication&body=Check out this article: http://yoursite.com/2018/12/24/JavaWebApplication/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2018/12/24/JavaWebApplication/&title=JavaWebApplication"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2018/12/24/JavaWebApplication/&title=JavaWebApplication"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/12/24/JavaWebApplication/&title=JavaWebApplication"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2018/12/24/JavaWebApplication/&title=JavaWebApplication"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/12/24/JavaWebApplication/&name=JavaWebApplication&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaWeb%E5%BA%94%E7%94%A8%E2%80%93%E5%AE%9E%E7%8E%B0%E5%89%8D%E7%AB%AF%E5%90%8E%E5%8F%B0%E7%AE%80%E5%8D%95%E4%BA%A4%E4%BA%92"><span class="toc-number">1.</span> <span class="toc-text">JavaWeb应用–实现前端后台简单交互</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        JavaWebApplication
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hexo</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-12-24T07:07:58.000Z" itemprop="datePublished">2018-12-24</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="JavaWeb应用–实现前端后台简单交互"><a href="#JavaWeb应用–实现前端后台简单交互" class="headerlink" title="JavaWeb应用–实现前端后台简单交互"></a><center><font color=#2E8B57>JavaWeb应用–实现前端后台简单交互</font></center></h1><p><font color=#2E8B57 size=4 ><strong>1. 实现功能</strong></font><br>&nbsp;&nbsp;本文实现的功能：登陆界面输入用户名和密码。如果用户名或者密码输入正确，则跳转到正确页面；否则，跳转到失败页面。  </p>
+<center class="third"><table><tr><th><img src="/images/1.png" width="400"/></th><th><img src="/images/2.png" width="400"/></th><th><img src="/images/3.png" width="400"/></th></tr></table></center>  
+<font color=#FF6347>**注意**</font> 用户名：admin &nbsp;密码：123456（为了方便，没有建立用户数据库库查询，而是直接定义好用户名与密码)  
+<font color=#2E8B57 size=4 >**2.实现步骤**</font>  
+&nbsp;&nbsp;需要准备的环境：Eclipse  
+<font color=#2E8B57 size=3 >**2.1 创建Dynamic Web Project**</font>  
+&nbsp;&nbsp;工程路径：**D:\WorkSpace\Ecplise-WorkSpace\Classes\Login**  
+&nbsp;&nbsp;创建方式：Eclipse->File->new->Dynamic Web Project->输入工程名  
+&nbsp;&nbsp;工程目录说明如下图所示:<center><img src="/images/4.png" width="600"/></center>  
+<font color=#2E8B57 size=3 >**2.2 前端页面（登陆、登陆成功、登陆失败）**</font>  
+&nbsp;&nbsp;路径: **D:\WorkSpace\Ecplise-WorkSpace\Classes\Login\WebContent\jsp**  
+&nbsp;&nbsp;2.2.1 登陆页面(login.jsp)  
+&nbsp;&nbsp;2.2.2 登陆成功页面(loginSuccess.jsp)   
+&nbsp;&nbsp;2.2.3 登陆失败页面(loginFail.jsp)   
+<font color=#2E8B57 size=3 >**2.3 后台服务**</font>  
+&nbsp;&nbsp;路径: **D:\WorkSpace\Ecplise-WorkSpace\Classes\Login\src**  
+&nbsp;&nbsp;2.3.1 loginServlet类-获取前端页面用户名和密码，调用loginDeal方法，并跳转至页面（成功或失败页面）  
+&nbsp;&nbsp;2.3.2 loginDeal类-判断用户名或密码是否正确   
+<font color=#FF6347>**说明：**</font>经过编译的工程，loginServlet.class和loginDeal.class一般默认会放在 .\Login\build\classes路径下，但我们需要将其放在 .\Login\WebContent\WEB-INF\classes路径下,因此需要修改buildpath的默认路径。
+<font color=#2E8B57 size=3 >**2.4 配置web.xml**</font>  
+&nbsp;&nbsp;web.xml文件实现对Servlet的URL映射。Web应用的默认URL入口是Web应用的根目录名，eg:对于Login应用，即:/Login  
+<font color=#2E8B57 size=4 >**3.代码附录(点击代码名称显示/隐藏）**</font><div><div class="fold_hider"><div class="close hider_title">&nbsp;&nbsp;登陆界面代码</div></div><div class="fold">
+<p>login.jsp  </p>
+<pre><code>import java.io.IOException;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;    
+/**
+ * @author zhaoyuan
+ * @date 2018年12月20日
+ * @function 用于获取前端页面（login.jsp）用户输入的用户名和密码，然后调用loginDeal方法进行处理跳转，
+ *           若用户名和密码正确则跳转至login_success.jsp页面,否则跳转至login_fail.jsp页面
+ */
+public class loginServlet implements javax.servlet.Servlet{
+    public void doPost(HttpServletRequest request, HttpServletResponse response)throws Exception {
+        String username = request.getParameter(&quot;username&quot;);// 取得用户名
+        String password = request.getParameter(&quot;password&quot;);// 取得密码
+        System.out.println(&quot;取得用户名和密码&quot;);
+
+        loginDeal db = new loginDeal(); // 构建登陆对象
+        boolean canLogin = db.LoginDeal(username, password);// 取得用户名和密码
+        if (canLogin) {// 根据登陆情况，跳转页面
+            System.out.println(&quot;用户名和密码正确&quot;);
+            response.sendRedirect(&quot;jsp/login_success.jsp&quot;);//地址重定向函数
+        } else {
+            System.out.println(&quot;用户名和密码错误&quot;);
+            response.sendRedirect(&quot;jsp/login_fail.jsp&quot;);    
+        }    
+    }
+    public void destroy() {
+    }
+    public ServletConfig getServletConfig() {
+        return null;
+    }
+    public String getServletInfo() {
+        return null;
+    }
+    public void init(ServletConfig arg0) throws ServletException {
+    }
+    public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+        HttpServletRequest rq = (HttpServletRequest) request;
+        HttpServletResponse rs = (HttpServletResponse) response;
+        try {
+            doPost(rq, rs);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }    
+}</code></pre>
+
+</div></div><div><div class="fold_hider"><div class="close hider_title">&nbsp;&nbsp;登录成功界面代码</div></div><div class="fold">
+<p>loginSuccess.jsp</p>
+<pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html;charset=UTF-8&quot;pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;哎呦不错，打开新世界了啦~&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        开心，登陆成功！
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+</div></div><div><div class="fold_hider"><div class="close hider_title">&nbsp;&nbsp;登陆失败界面代码</div></div><div class="fold">
+<p>loginFail.jsp</p>
+<pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;哎呦，你登陆失败了哇~&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        哎呦，你登陆失败了呢！
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+</div></div><div><div class="fold_hider"><div class="close hider_title">&nbsp;&nbsp;Servlet类实现代码</div></div><div class="fold">
+<p>loginServlet.java</p>
+<pre><code>import java.io.IOException;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * @author zhaoyuan
+ * @date 2018年12月20日
+ * @function 用于获取前端页面（login.jsp）用户输入的用户名和密码，然后调用loginDeal方法进行处理跳转，
+ *           若用户名和密码正确则跳转至login_success.jsp页面,否则跳转至login_fail.jsp页面
+ */
+public class loginServlet implements javax.servlet.Servlet{
+    public void doPost(HttpServletRequest request, HttpServletResponse response)throws Exception {
+        String username = request.getParameter(&quot;username&quot;);// 取得用户名
+        String password = request.getParameter(&quot;password&quot;);// 取得密码
+        System.out.println(&quot;取得用户名和密码&quot;);
+
+        loginDeal db = new loginDeal(); // 构建登陆对象
+        boolean canLogin = db.LoginDeal(username, password);// 取得用户名和密码
+        if (canLogin) {// 根据登陆情况，跳转页面
+            System.out.println(&quot;用户名和密码正确&quot;);
+            response.sendRedirect(&quot;jsp/login_success.jsp&quot;);//地址重定向函数
+        } else {
+            System.out.println(&quot;用户名和密码错误&quot;);
+            response.sendRedirect(&quot;jsp/login_fail.jsp&quot;);            
+        }    
+    }
+    public void destroy() {
+    }
+    public ServletConfig getServletConfig() {
+        return null;
+    }
+    public String getServletInfo() {
+        return null;
+    }
+    public void init(ServletConfig arg0) throws ServletException {
+    }
+    public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+        HttpServletRequest rq = (HttpServletRequest) request;
+        HttpServletResponse rs = (HttpServletResponse) response;
+        try {
+            doPost(rq, rs);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+
+</div></div><div><div class="fold_hider"><div class="close hider_title">&nbsp;&nbsp;后台交易处理代码</div></div><div class="fold">
+<p>loginDeal.java</p>
+<pre><code>/**
+ * @author zhaoyuan
+ * @date 2018年12月20日
+ * @function 用来判断前端界面（login.jsp)输入的用户名和密码是否正确.
+ *           是的，只有这个功能，哈哈！（本来应该连接数据库进行查询，但在此只是为了进行前端后台交互，就不做sql查询了）
+ */
+public class loginDeal {
+    public boolean LoginDeal(String username, String password)throws Exception{
+        boolean returnValue = false;
+        if(&quot;admin&quot;.equals(username)&amp;&amp;&quot;123456&quot;.equals(password)) {
+            returnValue = true;       
+        }
+
+        return returnValue;
+    }
+
+}</code></pre>
+
+</div></div><div><div class="fold_hider"><div class="close hider_title">&nbsp;&nbsp;web.xml配置文件</div></div><div class="fold">
+<p>web.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot; xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot; id=&quot;WebApp_ID&quot; version=&quot;3.1&quot;&gt;
+  &lt;display-name&gt;Login&lt;/display-name&gt;
+  &lt;welcome-file-list&gt;
+    &lt;welcome-file&gt;login.html&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;login.htm&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;login.jsp&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;default.html&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;default.htm&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;default.jsp&lt;/welcome-file&gt;
+  &lt;/welcome-file-list&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;loginServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;loginServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;loginServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/login&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;</code></pre>
+
+</div></div>
+<font color=#FF7F50 size=4 >Finally, it's done, 开心，撒花 \*_\* !</font>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a target="_blank" rel="noopener" href="https://lareina1993.github.io/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/lareina1993">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaWeb%E5%BA%94%E7%94%A8%E2%80%93%E5%AE%9E%E7%8E%B0%E5%89%8D%E7%AB%AF%E5%90%8E%E5%8F%B0%E7%AE%80%E5%8D%95%E4%BA%A4%E4%BA%92"><span class="toc-number">1.</span> <span class="toc-text">JavaWeb应用–实现前端后台简单交互</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/12/24/JavaWebApplication/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2018/12/24/JavaWebApplication/&text=JavaWebApplication"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/12/24/JavaWebApplication/&title=JavaWebApplication"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/12/24/JavaWebApplication/&is_video=false&description=JavaWebApplication"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JavaWebApplication&body=Check out this article: http://yoursite.com/2018/12/24/JavaWebApplication/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2018/12/24/JavaWebApplication/&title=JavaWebApplication"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2018/12/24/JavaWebApplication/&title=JavaWebApplication"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/12/24/JavaWebApplication/&title=JavaWebApplication"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2018/12/24/JavaWebApplication/&title=JavaWebApplication"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/12/24/JavaWebApplication/&name=JavaWebApplication&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a target="_blank" rel="noopener" href="https://lareina1993.github.io/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/lareina1993">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>
