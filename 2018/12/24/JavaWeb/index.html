@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1.构建一个最简单的javaweb应用1.1 创建工程&amp;nbsp;&amp;nbsp;工程路径：D:\WorkSpace\Ecplise-WorkSpace\Classes\MyFirstApp&amp;nbsp;&amp;nbsp;注意：为了简单用【**.】表示 D:\WorkSpace\Ecplise-WorkSpace\Classes\MyFirstApp(1)前端页面&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaWeb">
+<meta property="og:url" content="http://yoursite.com/2018/12/24/JavaWeb/index.html">
+<meta property="og:site_name" content="Lareina">
+<meta property="og:description" content="1.构建一个最简单的javaweb应用1.1 创建工程&amp;nbsp;&amp;nbsp;工程路径：D:\WorkSpace\Ecplise-WorkSpace\Classes\MyFirstApp&amp;nbsp;&amp;nbsp;注意：为了简单用【**.】表示 D:\WorkSpace\Ecplise-WorkSpace\Classes\MyFirstApp(1)前端页面&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/Navigator.png">
+<meta property="og:image" content="http://yoursite.com/images/Projector.png">
+<meta property="og:image" content="http://yoursite.com/images/javaweb流程图.png">
+<meta property="og:image" content="http://yoursite.com/images/login.png">
+<meta property="og:image" content="http://yoursite.com/images/response.png">
+<meta property="article:published_time" content="2018-12-24T07:09:15.000Z">
+<meta property="article:modified_time" content="2020-08-23T07:09:55.155Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/Navigator.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>JavaWeb</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.1.0"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Lareina</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a target="_blank" rel="noopener" href="https://lareina1993.github.io/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/lareina1993">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/12/26/MyFriends/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/12/24/JavaWebApplication/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/12/24/JavaWeb/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2018/12/24/JavaWeb/&text=JavaWeb"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/12/24/JavaWeb/&title=JavaWeb"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/12/24/JavaWeb/&is_video=false&description=JavaWeb"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JavaWeb&body=Check out this article: http://yoursite.com/2018/12/24/JavaWeb/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2018/12/24/JavaWeb/&title=JavaWeb"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2018/12/24/JavaWeb/&title=JavaWeb"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/12/24/JavaWeb/&title=JavaWeb"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2018/12/24/JavaWeb/&title=JavaWeb"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/12/24/JavaWeb/&name=JavaWeb&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        JavaWeb
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Lareina</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-12-24T07:09:15.000Z" itemprop="datePublished">2018-12-24</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><font color="#2E8B57" size="4"><strong>1.构建一个最简单的javaweb应用</strong></font><br><font color="#2E8B57" size="3"><strong>1.1 创建工程</strong></font><br>&nbsp;&nbsp;工程路径：<strong>D:\WorkSpace\Ecplise-WorkSpace\Classes\MyFirstApp</strong><br>&nbsp;&nbsp;注意：为了简单用【<font color="red">**.<strong></strong></font>】表示 D:\WorkSpace\Ecplise-WorkSpace\Classes\MyFirstApp<br>(1)前端页面&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8194;路径：<font color="red">.<strong></strong></font>&lt;!–swig￼0–&gt;<div><div class="fold_hider"><div class="close hider_title">&nbsp;&nbsp;响应界面代码</div></div><div class="fold">
+<p>response.jsp</p>
+<pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;这是一个响应&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;b&gt;你来时冬至，但眉上风止&lt;/b&gt;
+ ---&lt;%= request.getAttribute(&quot;USER&quot;) %&gt;
+&lt;/body&gt;
+&lt;/html&gt; </code></pre>
+
+</div></div>(2)Servlet类源文件&nbsp;&nbsp;路径：<font color="red">.**</font>\src\</p>
+<div><div class="fold_hider"><div class="close hider_title">&nbsp;&nbsp;Servlet实现类</div></div><div class="fold">
+<p>DispatcherServlet.java</p>
+<pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;这是一个响应&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;b&gt;你来时冬至，但眉上风止&lt;/b&gt;
+ ---&lt;%= request.getAttribute(&quot;USER&quot;) %&gt;
+&lt;/body&gt;
+&lt;/html&gt; </code></pre>
+
+</div></div>(3)Servlet编译文件&nbsp;&nbsp;路径：<font color="red">**.**</font>\WEB-INF\classes\ 
+<p>(4)配置文件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8194;路径：<font color="red">**.<strong></strong></font>\WEB-INF&lt;!–swig￼3–&gt;&nbsp;&nbsp;注意：DispatcherServlet类的编译依赖于库文件servlet-api.jar，可以从官网下载或直接从<CATALINA_HOME>\lib目录下导入工程中。<br>&nbsp;&nbsp;导入方法：Build Path–&gt;libraries–&gt;Add External JARs<br>&nbsp;&nbsp;导入结果：会自动生成一个Referenced Libraries<br>Javaweb的目录如下图：(两者区别：Projector Explorer 隐藏了WEB-INF下的classes目录）<center class="third"><table><tr><th><img src="/images/Navigator.png" width="400"></th><th><img src="/images/Projector.png" width="400"></th></tr></table></center><br><font color="#2E8B57" size="3">**1.2 工作原理</font>（注：理解可能有误，望海涵；不支持visio插入的markdown，差评~ ）</CATALINA_HOME></p>
+<center class="third"><table><tr><img src="/images/javaweb流程图.png" width="600"></tr></table></center><font color="#2E8B57" size="4">**2.实现JavaWeb发布的最简单方式**</font> 
+&nbsp;&nbsp;注：<CATLINA_HOME>----表示安装tomcat的路径
+(1)打包整个工程
+&nbsp;&nbsp;**cd D:\WorkSpace\Ecplise-WorkSpace\Classes\MyFirstApp**  //进入工程目录下
+&nbsp;&nbsp;**jar cvf MyFirstApp.war ./* **   //执行打包命令，生成war包
+(2)将MyFirstApp.war放到Tomcat的webapps目录下。
+(3)启动Tomcat服务器
+ &nbsp;&nbsp;<CATALINA_HOME>/bin/startup.bat
+ &nbsp;&nbsp;<CATLINA_HOME>/webapps目录下会解压MyFirstApp.war包生成相应的文件目录。
+(4)浏览器访问: http://localhost/MyFirstApp/login.html
+<center class="third"><table><tr><th><img src="/images/login.png" width="400"></th><th><img src="/images/response.png" width="400"></th></tr></table></center>
+<font color="#2E8B57" size="4">**3.By the way, Merry Christmas!**</font></CATLINA_HOME></CATALINA_HOME></CATLINA_HOME>
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a target="_blank" rel="noopener" href="https://lareina1993.github.io/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/lareina1993">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/12/24/JavaWeb/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2018/12/24/JavaWeb/&text=JavaWeb"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/12/24/JavaWeb/&title=JavaWeb"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/12/24/JavaWeb/&is_video=false&description=JavaWeb"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JavaWeb&body=Check out this article: http://yoursite.com/2018/12/24/JavaWeb/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2018/12/24/JavaWeb/&title=JavaWeb"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2018/12/24/JavaWeb/&title=JavaWeb"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/12/24/JavaWeb/&title=JavaWeb"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2018/12/24/JavaWeb/&title=JavaWeb"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/12/24/JavaWeb/&name=JavaWeb&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a target="_blank" rel="noopener" href="https://lareina1993.github.io/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/lareina1993">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>
